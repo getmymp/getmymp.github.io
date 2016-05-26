@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar.jsx';
 import MpFooter from './MpFooter.jsx';
-import apiUrl from 'config';
 
 import SingleMpView from './SingleMpView.jsx';
 
@@ -10,7 +9,7 @@ import AllMpView from './AllMpView.jsx';
 
 
 class App extends React.Component {
-
+  
   state = {
     selectedMP: null
   }
@@ -31,7 +30,7 @@ class App extends React.Component {
     var mps = []
 
     $.ajax({
-      url: `${apiUrl}/members`,
+      url: 'http://findmymp.herokuapp.com/members',
       dataType: "json",
       async: false,
       data: mps
@@ -47,25 +46,25 @@ class App extends React.Component {
     ? <SingleMpView
         mp = {this.state.selectedMP}
         data = { mps}
-      />
-    : <AllMpView
+      /> 
+    : <AllMpView 
         data = { shuffleArray(mps) }
         onChange = { this._changeSelectedMp }
     />
 
     return (
-
+ 
       <div>
-        <Navbar
+        <Navbar 
           onChange = { this._changeSelectedMp }
         />
 
         { componentToRender }
       </div>
     )
-  }
+  } 
 
-  _changeSelectedMp = (mp) => {
+  _changeSelectedMp = (mp) => {  
 
     this.setState({
       selectedMP: mp
@@ -73,7 +72,7 @@ class App extends React.Component {
   }
 
 
-
+  
 }
 
 export default App;

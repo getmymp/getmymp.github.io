@@ -38,9 +38,6 @@ var config = {
        },
       extensions: ['', '.js'],
     },
-
 };
-
-
 
 module.exports = config;

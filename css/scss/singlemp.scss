@@ -96,20 +96,7 @@
 }
 
 
-#mp-container {
-  display: flex;
-  justify-content: space-between;
 
-  flex-wrap: wrap;
-
-  .mp-index {
-    position: relative;
-    top: -20px;
-  }
-  .image-crop {
-    border-bottom: 0;
-  }
-}
 
 
 .mp-index-tag {
@@ -174,16 +161,17 @@
 .score-circle {
   margin:auto
 }
+
+.score-desc {
+  display:block;
+  font-weight:normal;
+}
 .score {
   text-align: center;
   color:#333;
   font-weight:bold;
-
-  display: flex;
-  justify-content:center;
-  align-content:center;
-  flex-direction:column;
-  position: relative;
+  width:205px;
+position:relative;
   .score-num {
     position: absolute;
     top: 35%;
@@ -242,6 +230,22 @@
     left: 31%;
 
   }
+
+  .score-num.ten{
+    color: #53992B;
+    left: 31%;
+
+  }
+
+  .score-num.cross{
+    color: #EA222D;
+    left: 35%;
+  }
+
+  .score-num.check{
+    color: #53992B;
+    left: 35%;
+  }
 }
 
 
@@ -261,12 +265,29 @@ circle {
 #gray{
   stroke: #AAA;
 }
+
+#cross {
+  stroke: #EA222D;
+  fill:#eeeeed;
+  stroke-dasharray: 284, 284; /* length of arc, circumference of circle */
+  stroke-dashoffset: 240; /* offset of arc from start point (1/2 arc length + 1/4 circumference (71) ) */  
+}
+
+#check {
+  stroke: #53992B;
+  fill:#eeeeed;
+  stroke-dasharray: 284, 284; /* length of arc, circumference of circle */
+  stroke-dashoffset: 0; /* offset of arc from start point (1/2 arc length + 1/4 circumference (71) ) */
+}
+
 #one{
   stroke: #EA222D;
   fill:#eeeeed;
   stroke-dasharray: 284, 284; /* length of arc, circumference of circle */
   stroke-dashoffset: 240; /* offset of arc from start point (1/2 arc length + 1/4 circumference (71) ) */
 }
+
+
 
 #two{
   stroke: #EA222D;

@@ -1,5 +1,4 @@
 import React from 'react';
-import apiUrl from 'config';
 
 class MpLocationSearch extends React.Component {
   state = {
@@ -27,7 +26,7 @@ const self = this
           lat = position.coords.latitude;
           long = position.coords.longitude;
           // window.location = 'http://localhost:3000/location/latitude:'+ lat +'&longitude:'+ long;
-          var url =  `${apiUrl}/location/latitude:${lat}&longitude:${long}`;
+          var url =  'http://localhost:3000/location/latitude:'+ lat +'&longitude:'+ long;
           console.log(url)
           var riding = ''
 
@@ -41,11 +40,11 @@ const self = this
           }).fail(function(res){
           })
 
-
+          
           var mps = []
 
           $.ajax({
-            url: `${apiUrl}/members`, 
+            url: 'http://localhost:3000/members',
             dataType: "json",
             async: false,
             data: mps
@@ -54,10 +53,10 @@ const self = this
           }).fail(function(res){
           })
           var mpId = ''
-          mps.map(function (mp) {
-            if (mp.riding_id == riding.riding) {
-              mpId = mp.id
-            }
+          mps.map(function (mp) { 
+            if (mp.riding_id == riding.riding) { 
+              mpId = mp.id            
+            } 
           });
 
           console.log(mpId)
@@ -66,7 +65,7 @@ const self = this
 
       });
     }
-
+    
   }
 
 

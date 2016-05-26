@@ -1,15 +1,14 @@
 import React from 'react';
-import apiUrl from 'config';
 
 var MpNews = React.createClass({
-
+ 
   render: function() {
     var news = {}
 
 
 
     $.ajax({
-      url: `${apiUrl}/news/${this.props.mp.name}`,
+      url: 'http://localhost:3000/news/' + this.props.mp.name,
       dataType: "json",
       async: false,
       data: news
@@ -19,7 +18,7 @@ var MpNews = React.createClass({
     })
     console.log(news[0])
     return (
-
+      
         <div className="row-item">
         <h2>In the News</h2>
             {news.map(function(story){
@@ -31,7 +30,7 @@ var MpNews = React.createClass({
                 )
             }, this)}
         </div>
-
+      
     )
   }
 });

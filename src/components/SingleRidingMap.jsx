@@ -1,5 +1,4 @@
 import React from 'react';
-import apiUrl from 'config';
 
 var SingleRidingMap = React.createClass({
 
@@ -15,7 +14,7 @@ var SingleRidingMap = React.createClass({
     });
 
     map.on('style.load', function(){
-      $.getJSON(`${apiUrl}/riding/${riding}`, function(response){
+      $.getJSON('http://findmymp.herokuapp.com/riding/' + riding, function(response){
         var boundingBox = getBoundingBox(response);
         var ridingBoundary = new mapboxgl.GeoJSONSource({ data: response } );
 
@@ -108,14 +107,14 @@ var SingleRidingMap = React.createClass({
 
     map.scrollZoom.disable();
     map.dragPan.disable();
-
+   
   },
-
+ 
   render: function() {
     return (
-
+      
         <div id='map' className="single-map"></div>
-
+      
     )
   }
 });
