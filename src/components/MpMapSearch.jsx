@@ -3,7 +3,7 @@ import React from 'react';
 class MpMapSearch extends React.Component{
   constructor(props) {
     super(props)
-    window.mapClick = this._selectMp 
+    window.mapClick = this._selectMp
   }
 
   _selectMp = (mpId) => {
@@ -16,7 +16,7 @@ class MpMapSearch extends React.Component{
       mapboxgl.accessToken = 'pk.eyJ1IjoiYnJpYW5iYW5jcm9mdCIsImEiOiJsVGVnMXFzIn0.7ldhVh3Ppsgv4lCYs65UdA';
         var map = new mapboxgl.Map({
             container: 'map',
-            
+
             maxBounds: [
                 [-141.8521455, 41.68392799015035], // Southwest coordinates
                 [-52.0792153, 83.7630545]  // Northeast coordinates
@@ -33,27 +33,28 @@ class MpMapSearch extends React.Component{
 
             },'water');
             map.addLayer({
-                "id": "ridings-canada",
-                "type": "fill",
-                "source": "ridings-canada",
-                "source-layer": "electboundaries1",
-                'paint': {
-                  'fill-color': '#334455',
-                  'fill-opacity': 0.5,
-                  'fill-outline-color': 'rgba(200,100,240,1)',
-                }
-
-            },'water');
-            map.addLayer({
               'id': 'lib-riding',
               'type': 'fill',
               "source": "ridings-canada",
               "source-layer": "electboundaries1",
               'paint': {
                 'fill-color': '#ed2e38',
-                'fill-opacity': 0.8
+                'fill-opacity': 0.8,
+                'fill-outline-color': '#000'
               },
               filter: ['==', 'Party', 'Liberal']
+            },'water');
+            map.addLayer({
+                "id": "ridings-canada",
+                "type": "line",
+                "source": "ridings-canada",
+                "source-layer": "electboundaries1",
+                'paint': {
+                  "line-color": "#330033",
+                  "line-width": 3,
+                  'fill-outline-color': '#000'
+                }
+
             },'water');
             map.addLayer({
               'id': 'con-riding',
@@ -62,7 +63,8 @@ class MpMapSearch extends React.Component{
               "source-layer": "electboundaries1",
               'paint': {
                 'fill-color': '#002395',
-                'fill-opacity': 0.8
+                'fill-opacity': 0.8,
+                'fill-outline-color': '#000'
               },
               filter: ['==', 'Party', 'Conservative']
             },'water');
@@ -73,7 +75,8 @@ class MpMapSearch extends React.Component{
               "source-layer": "electboundaries1",
               'paint': {
                 'fill-color': '#FF5800',
-                'fill-opacity': 0.8
+                'fill-opacity': 0.8,
+                'fill-outline-color': '#000'
               },
               filter: ['==', 'Party', 'NDP']
             },'water');
@@ -84,7 +87,8 @@ class MpMapSearch extends React.Component{
               "source-layer": "electboundaries1",
               'paint': {
                 'fill-color': '#427730',
-                'fill-opacity': 0.8
+                'fill-opacity': 0.8,
+                'fill-outline-color': '#000'
               },
               filter: ['==', 'Party', 'Green Party']
             });
@@ -95,22 +99,13 @@ class MpMapSearch extends React.Component{
               "source-layer": "electboundaries1",
               'paint': {
                 'fill-color': '#0088CE',
-                'fill-opacity': 0.8
+                'fill-opacity': 0.8,
+                'fill-outline-color': '#000'
               },
               filter: ['==', 'Party', 'Bloc Quebecois']
             },'water');
 
-            map.addLayer({
-                "id": "ridings-canada",
-                "type": "line",
-                "source": "ridings-canada",
-                "source-layer": "electboundaries1",
-                'paint': {
-                  "line-color": "#330033",
-                  "line-width": 8
-                }
 
-            },'water');
 
         });
 
@@ -135,15 +130,15 @@ class MpMapSearch extends React.Component{
 
             var popup = new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
-                .setHTML("<center>" + "<b>" + mpId + "</b>" + "<br>" + feature.properties.ENNAME + "</center><br><button onClick=window.mapClick(" + mpId + ") >See Profile</button>")
+                .setHTML("<center>" + "<br>" + "<h2>" + feature.properties.ENNAME + "</h2>" + "</center><br><button onClick=window.mapClick(" + mpId + ") >GET MY MP</button>")
                 .addTo(map);
         });
 
         map.dragRotate.disable();
         map.touchZoomRotate.disableRotation();
-   
+
   };
- 
+
   render() {
     return (
       <div>
